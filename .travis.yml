@@ -20,3 +20,16 @@ after_success:
     - docker push omers1414/multi-nginx
     - docker push omers1414/multi-server
     - docker push omers1414/multi-worker
+
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: us-east-1
+    app: mult-docker
+    env: MultDocker-env
+    bucket_name: elasticbeanstalk-us-east-1-790662091625
+    bucket_path: mult-docker
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
